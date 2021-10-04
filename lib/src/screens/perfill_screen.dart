@@ -150,10 +150,8 @@ class _PerfilScreenState extends State<PerfilScreen> {
                       child: Text('Guardar'),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          String imgString =
-                              Utility.base64String(_imagen!.readAsBytesSync());
                           PerfilModel perfil = PerfilModel(
-                              avatar: imgString,
+                              avatar: _imagen,
                               nombre: _controllerNombre.text,
                               apellidoP: _controllerApellidoP.text,
                               apellidoM: _controllerApellidoM.text,
