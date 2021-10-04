@@ -17,6 +17,14 @@ class DashBoardScreen extends StatelessWidget {
             UserAccountsDrawerHeader(
               accountName: Text("ISC"),
               accountEmail: Text("17030830"),
+              otherAccountsPictures: [
+                IconButton(
+                    icon: Icon(Icons.more_horiz),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/perfil');
+                    }),
+              ],
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                     'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man4-512.png'),
@@ -43,6 +51,26 @@ class DashBoardScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/intenciones');
+              },
+            ),
+            ListTile(
+              title: Text('Notas'),
+              subtitle: Text('CRUD Notas'),
+              leading: Icon(Icons.note),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/notas');
+              },
+            ),
+            ListTile(
+              title: Text('Movies'),
+              subtitle: Text('Prueba API REST'),
+              leading: Icon(Icons.movie),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/movie');
               },
             ),
           ],
