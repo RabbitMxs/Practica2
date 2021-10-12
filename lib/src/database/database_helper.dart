@@ -10,6 +10,8 @@ class DatabaseHelper {
   static final _versionBD = 6;
   static final _nombreTBL = "tblNotas";
   static final _nombreTBL2 = "tblPerfiles";
+  //static final _nombreTBLTareas = "tblTareas";
+
   static Database? _database;
 
   Future<Database?> get database async {
@@ -28,7 +30,9 @@ class DatabaseHelper {
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    db.execute('DROP TABLE $_nombreTBL2');
+    //db.execute('DROP TABLE $_nombreTBL2');
+    //db.execute(
+    //    "Create table $_nombreTBL2 (id INTEGER PRIMARY KEY, avatar TEXT, nombre VARCHAR(50), apellidoP VARCHAR(50), apellidoM VARCHAR(50), tel VARCHAR(10), email VARCHAR(50))");
     db.execute(
         "Create table $_nombreTBL2 (id INTEGER PRIMARY KEY, avatar TEXT, nombre VARCHAR(50), apellidoP VARCHAR(50), apellidoM VARCHAR(50), tel VARCHAR(10), email VARCHAR(50))");
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practica2/src/models/popular_movies_model.dart';
 import 'package:practica2/src/network/api_popular.dart';
 import 'package:practica2/src/utils/color_settings.dart';
+import 'package:practica2/src/views/card_popular.dart';
 
 class PopularScreen extends StatefulWidget {
   PopularScreen({Key? key}) : super(key: key);
@@ -52,8 +53,8 @@ class _PopularScreenState extends State<PopularScreen> {
     return ListView.separated(
         itemBuilder: (context, index) {
           PopularMoviesModel popular = movies![index];
-          return Card();
-          //return CardPopularView(popular);
+          //return Text(popular.title!);
+          return CardPopularView(popular: popular);
         },
         separatorBuilder: (_, __) => Divider(height: 10),
         itemCount: movies!.length);

@@ -1,5 +1,3 @@
-//import 'package:email_validator/email_validator.dart';
-//import 'dart:html';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -28,7 +26,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
   bool _validateApellidoM = false;
   bool _validateTel = false;
   bool _validateEmail = false;
-  //List<GlobalKey<FormState>> _formKeys = [GlobalKey<FormState>()];
 
   //base de datos
   late DatabaseHelper _databaseHelper;
@@ -247,11 +244,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
                       child: ElevatedButton(
                         child: Text('Guardar'),
                         onPressed: () {
-                          /*for (int i = 0; i < _formKeys.length; i++) {
-                              if (_formKeys[i].currentState!.validate()) {
-                                _formKeys[i].currentState!.save();
-                              }
-                            }*/
                           setState(() {
                             _controllerNombre.text.isEmpty
                                 ? _validateNombre = true
