@@ -73,6 +73,16 @@ class DashBoardScreen extends StatelessWidget {
                 Navigator.pushNamed(context, '/movie');
               },
             ),
+            ListTile(
+              title: Text('Tareas'),
+              subtitle: Text('CRUD Tareas'),
+              leading: Icon(Icons.task_alt),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/tareas');
+              },
+            ),
           ],
         ),
       ),

@@ -16,7 +16,6 @@ class _NotasScreenState extends State<NotasScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _databaseHelper = DatabaseHelper();
   }

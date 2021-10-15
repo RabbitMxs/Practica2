@@ -6,6 +6,9 @@ import 'package:practica2/src/screens/notas_screen.dart';
 import 'package:practica2/src/screens/opcion1_screen.dart';
 import 'package:practica2/src/screens/perfill_screen.dart';
 import 'package:practica2/src/screens/splash_sreen.dart';
+import 'package:practica2/src/screens/tareas_screens/agregar_tarea_screen.dart';
+import 'package:practica2/src/screens/tareas_screens/tareas_completadas_screen.dart';
+import 'package:practica2/src/screens/tareas_screens/tareas_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +27,10 @@ class MyApp extends StatelessWidget {
         '/agregar': (BuildContext context) => AgregarNotaScreen(),
         '/perfil': (BuildContext context) => PerfilScreen(),
         '/movie': (BuildContext context) => PopularScreen(),
+        '/tareas': (BuildContext context) => TareasScreen(),
+        '/agregartareas': (BuildContext context) => AgregarTareaScreen(),
+        '/tareascompletadas': (BuildContext context) =>
+            TareasCompletadasScreen(),
       },
       debugShowCheckedModeBanner: false,
       home: SplashSreen(),
