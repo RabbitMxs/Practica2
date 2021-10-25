@@ -27,6 +27,15 @@ class _PopularScreenState extends State<PopularScreen> {
       appBar: AppBar(
         backgroundColor: ColorsSettings.colorPrimary,
         title: Text('Lista de peliculas'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/favoritas').whenComplete(() {
+                  setState(() {});
+                });
+              },
+              icon: Icon(Icons.list_alt))
+        ],
       ),
       body: FutureBuilder(
         future: apiPopular!.getAllPoular(),

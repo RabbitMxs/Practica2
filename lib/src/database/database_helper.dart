@@ -1,17 +1,20 @@
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:practica2/src/models/fav_model.dart';
 import 'package:practica2/src/models/notas_model.dart';
 import 'package:practica2/src/models/perfil_model.dart';
+import 'package:practica2/src/models/popular_movies_model.dart';
 import 'package:practica2/src/models/tareas_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
   static final _nombreBD = "NOTASDB";
-  static final _versionBD = 9;
+  static final _versionBD = 11;
   static final _nombreTBL = "tblNotas";
   static final _nombreTBL2 = "tblPerfiles";
   static final _nombreTBLTareas = "tblTareas";
+  static final _nombreTBLFavorita = "tblMovieFavotira";
 
   static Database? _database;
 
@@ -31,9 +34,9 @@ class DatabaseHelper {
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    db.execute('DROP TABLE $_nombreTBLTareas');
+    db.execute('DROP TABLE $_nombreTBLFavorita');
     db.execute(
-        "Create table $_nombreTBLTareas (id INTEGER PRIMARY KEY, nomTarea VARCHAR(100), dscTarea VARCHAR(255), fechaEntrega datetime, entregada boolean)");
+        "Create table $_nombreTBLFavorita (id INTEGER PRIMARY KEY, backdrop_path VARCHAR(255), title VARCHAR(255))");
   }
 
   Future<void> _crearTabla(Database db, int version) async {
@@ -43,6 +46,8 @@ class DatabaseHelper {
         "Create table $_nombreTBL2 (id INTEGER PRIMARY KEY, avatar TEXT, nombre VARCHAR(50), apellidoP VARCHAR(50), apellidoM VARCHAR(50), tel VARCHAR(10), email VARCHAR(50))");
     await db.execute(
         "Create table $_nombreTBLTareas (id INTEGER PRIMARY KEY, nomTarea VARCHAR(100), dscTarea VARCHAR(255), fechaEntrega datetime, entregada boolean)");
+    await db.execute(
+        "Create table $_nombreTBLFavorita (id INTEGER PRIMARY KEY, backdropPath VARCHAR(255), title VARCHAR(255))");
   }
 
   //CRUD NOTAS
@@ -136,5 +141,35 @@ class DatabaseHelper {
     var result = await conexion!
         .query(_nombreTBLTareas, where: 'id = ? ', whereArgs: [id]);
     return TareasModel.fromMap(result.first);
+  }
+
+  //FAVORITAS
+  Future<int> insertFavorita(Map<String, dynamic> row) async {
+    var conexion = await database;
+    return conexion!.insert(_nombreTBLFavorita, row);
+  }
+
+  Future<int> deleteFavorita(int id) async {
+    var conexion = await database;
+    return await conexion!
+        .delete(_nombreTBLFavorita, where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<List<FavoritaModel>> getAllFavoritas() async {
+    var conexion = await database;
+    var result = await conexion!.query(_nombreTBLFavorita);
+    return result.map((notaMap) => FavoritaModel.fromMap(notaMap)).toList();
+  }
+
+  Future<FavoritaModel?> getFavorita(int id) async {
+    var conexion = await database;
+    var result = await conexion!
+        .query(_nombreTBLFavorita, where: 'id = ? ', whereArgs: [id]);
+
+    if (result.isEmpty) {
+      return null;
+    } else {
+      return FavoritaModel.fromMap(result.first);
+    }
   }
 }
