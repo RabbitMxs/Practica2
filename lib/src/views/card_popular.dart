@@ -39,9 +39,12 @@ class _CardPopularViewState extends State<CardPopularView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                widget.popular.title.toString(),
-                style: TextStyle(color: Colors.white, fontSize: 12.0),
+              Hero(
+                tag: 'titulo',
+                child: Text(
+                  widget.popular.title.toString(),
+                  style: TextStyle(color: Colors.white, fontSize: 12.0),
+                ),
               ),
               MaterialButton(
                 onPressed: () {
