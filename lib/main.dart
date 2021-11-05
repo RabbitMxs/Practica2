@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:practica2/src/screens/Intenciones_screen.dart';
 import 'package:practica2/src/screens/agregar_nota_screen.dart';
+import 'package:practica2/src/screens/heroes_screens/hero_details.dart';
+import 'package:practica2/src/screens/heroes_screens/heroes_screen.dart';
 import 'package:practica2/src/screens/movies_screens/detail_screen.dart';
 import 'package:practica2/src/screens/movies_screens/favoritas_screen.dart';
 import 'package:practica2/src/screens/movies_screens/popular_screen.dart';
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
             TareasCompletadasScreen(),
         '/details': (BuildContext context) => DetailScreen(),
         '/favoritas': (BuildContext context) => FavoritaScreen(),
+        '/heroes': (BuildContext context) => HeroScreen(),
+        '/detailheroe': (BuildContext context) => HeroDetails(),
       },
       debugShowCheckedModeBanner: false,
       home: SplashSreen(),

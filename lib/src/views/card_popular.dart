@@ -15,21 +15,24 @@ class _CardPopularViewState extends State<CardPopularView> {
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.bottomCenter, children: [
       Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black87,
-                    offset: Offset(0.0, 5.0),
-                    blurRadius: 2.5)
-              ]),
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: FadeInImage(
-                  placeholder: AssetImage('assets/activity_indicator.gif'),
-                  image: NetworkImage(
-                      'https://image.tmdb.org/t/p/w500${widget.popular.backdropPath}'),
-                  fadeInDuration: Duration(milliseconds: 200)))),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black87,
+                  offset: Offset(0.0, 5.0),
+                  blurRadius: 2.5)
+            ]),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: FadeInImage(
+            placeholder: AssetImage('assets/activity_indicator.gif'),
+            image: NetworkImage(
+                'https://image.tmdb.org/t/p/w500${widget.popular.backdropPath}'),
+            fadeInDuration: Duration(milliseconds: 200),
+          ),
+        ),
+      ),
       Opacity(
         opacity: .5,
         child: Container(

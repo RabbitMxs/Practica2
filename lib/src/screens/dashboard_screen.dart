@@ -83,6 +83,16 @@ class DashBoardScreen extends StatelessWidget {
                 Navigator.pushNamed(context, '/tareas');
               },
             ),
+            ListTile(
+              title: Text('Dota 2'),
+              subtitle: Text('Lista de heroes'),
+              leading: Icon(Icons.games),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/heroes');
+              },
+            ),
           ],
         ),
       ),
